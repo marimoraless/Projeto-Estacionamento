@@ -1,6 +1,5 @@
 ﻿using DesafioFundamentos.Models;
 
-// Coloca o encoding para UTF8 para exibir acentuação
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
 decimal precoInicial = 0;
@@ -10,16 +9,14 @@ Console.WriteLine("Seja bem vindo ao sistema de estacionamento!\n" +
                   "Digite o preço inicial:");
 precoInicial = Convert.ToDecimal(Console.ReadLine());
 
-Console.WriteLine("Agora digite o preço por hora:");
+Console.WriteLine ("Agora digite o preço por hora:");
 precoPorHora = Convert.ToDecimal(Console.ReadLine());
 
-// Instancia a classe Estacionamento, já com os valores obtidos anteriormente
 Estacionamento es = new Estacionamento(precoInicial, precoPorHora);
 
 string opcao = string.Empty;
 bool exibirMenu = true;
 
-// Realiza o loop do menu
 while (exibirMenu)
 {
     Console.Clear();
@@ -32,11 +29,17 @@ while (exibirMenu)
     switch (Console.ReadLine())
     {
         case "1":
-            es.AdicionarVeiculo();
+            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string placa = Console.ReadLine();
+            es.AdicionarVeiculo(placa);
             break;
 
         case "2":
-            es.RemoverVeiculo();
+            Console.WriteLine("Digite a placa do veículo a ser removido:");
+            string placaRemover = Console.ReadLine();
+            Console.WriteLine("Digite a quantidade de horas do veículo a ser removido:");
+            int horas = int.Parse(Console.ReadLine());
+            es.RemoverVeiculo(placaRemover, horas);
             break;
 
         case "3":
@@ -52,8 +55,7 @@ while (exibirMenu)
             break;
     }
 
-    Console.WriteLine("Pressione uma tecla para continuar");
+    Console.WriteLine("Pressione enter para continuar");
     Console.ReadLine();
-}
-
-Console.WriteLine("O programa se encerrou");
+    Console.WriteLine("O programa se encerrou");
+}    
