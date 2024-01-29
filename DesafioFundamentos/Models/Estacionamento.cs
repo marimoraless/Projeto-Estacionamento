@@ -25,12 +25,8 @@ namespace DesafioFundamentos.Models
 
         public void RemoverVeiculo(string placa, decimal horas)
         {
-            Console.WriteLine("Digite a placa do veículo para remover:");
-
             if (veiculos.Any(veiculoPlaca => veiculoPlaca.ToUpper() == placa.ToUpper()))
             {
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-                
                 decimal valorTotal = 0; 
                 
                 valorTotal = precoInicial + (precoPorHora * horas);
